@@ -1,0 +1,29 @@
+% ES205 Lab 4 Task 2
+clear variables; close all; clc
+
+%% Load Data
+BeamConfig = 'A';
+filename = 'Beam_TruncA.csv';
+X = readtable(filename, 'NumHeaderLines', 0);
+t = X.t; a = X.a;
+
+%% Find natural frequency
+T = 0.04;
+[aPks, tPks] = findpeaks(a, t, 'MinPeakDistance', 0.95*T);
+NPks = length(tPks);
+
+[deltaT, delta] = deal(NPks-1, 1);
+for i = 1:NPks - 1
+    deltaT(i) = tPks(i + 1) - tPks(i);
+    delta(i) = (1/i)*log(aPks(1)/aPks(i + 1));
+end
+
+T = mean(deltaT);
+deltaAvg = mean(delta);
+zeta = deltaAvg/sqrt(deltaAvg^2 + 4*pi^2);
+fd = 1/T;           % in Hz
+omegad = 2*pi*fd;   % in rad/sec
+disp(['Damped Natural Frequency ', num2str(fd), 'Hz'])
+disp(['Damping Ratio            ', num2str(zeta)])
+
+%TODO: finish task 2
