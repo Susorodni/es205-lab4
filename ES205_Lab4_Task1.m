@@ -41,3 +41,5 @@ ylabel('Acceleration (m/s^2)')
 %% Write output file
 beam_trunc = table(t, a);
 writetable(beam_trunc, 'Beam_TruncA.csv');
+
+% asodiasofd ada;km
