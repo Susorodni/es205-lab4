@@ -106,7 +106,7 @@ title('Steel Beam Acceleration Truncated Data')
 %% Find distance between peaks
 % Estimated period
 dTSteel = 0.04;
-[aPksSteel, tPksSteel] = findpeaks(a, tAlum, 'MinPeakDistance', 0.95*dTSteel);
+[aPksSteel, tPksSteel] = findpeaks(s, tAlum, 'MinPeakDistance', 0.95*dTSteel);
 
 %% Plot peaks
 plot(tPksSteel, aPksSteel, 'o')
@@ -114,5 +114,5 @@ xlabel('Time (s)')
 ylabel('Acceleration (m/s^2)')
 
 %% Write data
-steel_beam_trunc = table(tSteel, a);
+steel_beam_trunc = table(tSteel, s);
 writetable(steel_beam_trunc, 'Beam_TruncB.csv');
