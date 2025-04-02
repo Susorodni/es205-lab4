@@ -58,4 +58,3 @@ disp(['Damped Natural Frequency ', num2str(fdSteel), ' Hz'])
 disp(['Natural Frequency        ', num2str(fnSteel), ' Hz'])
 
 Autospectrum(tSteel, s, 'Acceleration');
-%TODO: finish task 2
