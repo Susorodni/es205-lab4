@@ -21,7 +21,7 @@ deltaAvgAlum = mean(deltaAlum);
 zetaAlum = deltaAvgAlum/sqrt(deltaAvgAlum^2 + 4*pi^2);
 fdAlum = 1/TAlum;           % in Hz
 omegadAlum = 2*pi*fdAlum;   % in rad/sec
-fnAlum = omegadAlum/sqrt(1 - zetaAlum^2);
+fnAlum = (omegadAlum/sqrt(1 - zetaAlum^2))/(2*pi);
 disp('Aluminum Beam')
 disp(['Average Delta            ', num2str(deltaAvgAlum)])
 disp(['Zeta                     ', num2str(zetaAlum)])
@@ -50,6 +50,7 @@ deltaAvgSteel = mean(deltaSteel);
 zetaSteel = deltaAvgSteel/sqrt(deltaAvgSteel^2 + 4*pi^2);
 fdSteel = 1/TSteel;           % in Hz
 omegadSteel = 2*pi*fdSteel;   % in rad/sec
+% TODO: FIX NATURAL FREQUENCY OF STEEL
 fnSteel = omegadSteel/sqrt(1 - zetaSteel^2);
 disp('Aluminum Beam')
 disp(['Average Delta            ', num2str(deltaAvgSteel)])
@@ -58,4 +59,3 @@ disp(['Damped Natural Frequency ', num2str(fdSteel), ' Hz'])
 disp(['Natural Frequency        ', num2str(fnSteel), ' Hz'])
 
 Autospectrum(tSteel, s, 'Acceleration');
-%TODO: finish task 2

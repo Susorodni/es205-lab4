@@ -28,24 +28,10 @@ omegan_Steel_init = sqrt(k_Steel/m_Steel_eq);           % rad/s
 fn_Alum_init = omegan_Alum_init/(2*pi);                 % Hz
 fn_Steel_init = omegan_Steel_init/(2*pi);               % Hz
 
-%% Mass Adjustment
-% Adjust until fn_Alum_final becomes 24.98 Hz
-m_adj_Alum = 0.0041;                                      % kg
 
-m_Alum_final= m_Alum_eq + m_adj_Alum;                   % kg
 
-%% Natural Frequency Adjustment
-omegan_Alum_final = sqrt(k_Alum/m_Alum_final);
-fn_Alum_final = omegan_Alum_final/(2*pi);
 
 
 
 %% Display Results
-disp('Table 2')
-disp('Aluminum')
-disp(['Initial Natural Frequency ', num2str(fn_Alum_init), ' Hz'])
-disp(['Mass Adjustment           '])
-disp(['Stiffness                 ', num2str(k_Alum), ' units'])
-
-
-
+display(['Table 2'])
