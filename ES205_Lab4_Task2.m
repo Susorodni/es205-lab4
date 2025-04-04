@@ -51,7 +51,7 @@ zetaSteel = deltaAvgSteel/sqrt(deltaAvgSteel^2 + 4*pi^2);
 fdSteel = 1/TSteel;           % in Hz
 omegadSteel = 2*pi*fdSteel;   % in rad/sec
 fnSteel = omegadSteel/sqrt(1 - zetaSteel^2);
-disp('Aluminum Beam')
+disp('Steel Beam')
 disp(['Average Delta            ', num2str(deltaAvgSteel)])
 disp(['Zeta                     ', num2str(zetaSteel)])
 disp(['Damped Natural Frequency ', num2str(fdSteel), ' Hz'])

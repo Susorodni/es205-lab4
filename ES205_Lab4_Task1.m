@@ -21,7 +21,7 @@ for idx = 1:length(tAlum)
 end
 
 tAlumBeg = tAlum(idx);
-tAlumEnd = tAlumBeg + 7;
+tAlumEnd = tAlumBeg + 1;
 deltaTAlum = tAlum(2) - tAlum(1);   % time step
 fsAlum = 1/deltaTAlum;          % sample rate
 NBegAlum = round(tAlumBeg*fsAlum);  % starting sample
@@ -30,6 +30,7 @@ tAlum(NEndAlum+1:end) = []; a(NEndAlum+1:end) = [];
 tAlum(1:NBegAlum) = []; a(1:NBegAlum) = [];
 tAlum = tAlum - tAlum(1);   % start time at zero
 
+a = a - mean(a);
 %% Plot
 figure
 set(gcf, 'Position', [50 50 1200 700]);
@@ -95,6 +96,8 @@ tSteel(NEndSteel+1:end) = []; s(NEndSteel+1:end) = [];
 tSteel(1:NBegSteel) = []; s(1:NBegSteel) = [];
 tSteel = tSteel - tSteel(1);   % start time at zero
 
+s = s - mean(s);
+
 %% Plot Truncated Data
 figure
 set(gcf, 'Position', [50 50 1200 700]);
@@ -106,7 +109,7 @@ title('Steel Beam Acceleration Truncated Data')
 %% Find distance between peaks
 % Estimated period
 dTSteel = 0.04;
-[aPksSteel, tPksSteel] = findpeaks(s, tAlum, 'MinPeakDistance', 0.95*dTSteel);
+[aPksSteel, tPksSteel] = findpeaks(s, tSteel, 'MinPeakDistance', 0.95*dTSteel);
 
 %% Plot peaks
 plot(tPksSteel, aPksSteel, 'o')
