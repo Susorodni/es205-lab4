@@ -38,14 +38,9 @@ m_Alum_final= m_Alum_eq + m_adj_Alum;                   % kg
 omegan_Alum_final = sqrt(k_Alum/m_Alum_final);
 fn_Alum_final = omegan_Alum_final/(2*pi);
 
-
-
 %% Display Results
 disp('Table 2')
 disp('Aluminum')
 disp(['Initial Natural Frequency ', num2str(fn_Alum_init), ' Hz'])
 disp(['Mass Adjustment           '])
 disp(['Stiffness                 ', num2str(k_Alum), ' units'])
-
-
-
