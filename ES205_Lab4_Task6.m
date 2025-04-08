@@ -45,7 +45,16 @@ y = q(:,1);
 ydot = q(:,2);
 aStar = -(1/m)*(c*ydot + k*y);
 
-% plot optimized model
+% plot optimized model, 1st second
+figure; set(gcf, 'Position', [50 50 1200 700]); hold on
+plot(t_cut, a_cut, t_cut, aStar(1:idx))
+plot(t_cut, aStar(1:idx), 'o', 'MarkerSize', 1, 'MarkerFaceColor','r')
+xlabel('Time (s)')
+ylabel('Acceleration (m/s^2)')
+grid on
+legend('Measured','Optimized Model')
+
+% plot optimized model, full time
 figure; set(gcf, 'Position', [50 50 1200 700]); hold on
 plot(t, a, t, aStar)
 plot(t, aStar, 'o', 'MarkerSize', 1, 'MarkerFaceColor','r')
@@ -53,3 +62,7 @@ xlabel('Time (s)')
 ylabel('Acceleration (m/s^2)')
 grid on
 legend('Measured','Optimized Model')
+
+%%
+parameters = [y0 m c]';
+writematrix(parameters, 'Piezo_Parameters.csv');
