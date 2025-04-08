@@ -50,3 +50,4 @@ xlabel('Time (s)')
 ylabel('Acceleration (m/s^2)')
 grid on
 legend('Measured','Optimized Model')
+title('Optimized Model of Aluminum Beam')

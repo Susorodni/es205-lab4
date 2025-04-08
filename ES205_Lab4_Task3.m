@@ -42,15 +42,24 @@ omegan_Steel_final = sqrt(k_Steel/m_Steel_final);
 fn_Alum_final = omegan_Alum_final/(2*pi);
 fn_Steel_final = omegan_Steel_final/(2*pi);
 
+%% Dampening Calculation
+zeta_Alum = 0.0042;
+zeta_Steel = 0.0041;
+c_Alum = ((2*zeta_Alum)/omegan_Alum_final)*k_Alum;
+c_Steel = ((2*zeta_Steel)/omegan_Steel_final)*k_Steel;
+
 %% Display Results
 disp('Table 2')
 disp('Aluminum')
 disp(['Initial Natural Frequency    ', num2str(fn_Alum_init), ' Hz'])
-disp(['Mass Adjustment              ', num2str(m_adj_Alum), ' kg'])
+disp(['Mass Adjustment              ', num2str(m_adj_Alum*1000), ' g'])
 disp(['Stiffness                    ', num2str(k_Alum), ' units'])
+disp(['Final Mass                   ', num2str(m_Alum_final*1000), ' g'])
+disp(['Dampening                    ', num2str(c_Alum)])
 disp(' ')
 disp('Steel')
 disp(['Initial Natural Frequency    ', num2str(fn_Steel_init), ' Hz'])
-disp(['Mass Adjustment              ', num2str(m_adj_Steel), ' kg'])
+disp(['Mass Adjustment              ', num2str(m_adj_Steel*1000), ' g'])
 disp(['Stiffness                    ', num2str(k_Steel), ' units'])
-
+disp(['Final Mass                   ', num2str(m_Steel_final*1000), ' g'])
+disp(['Dampening                    ', num2str(c_Steel)])
