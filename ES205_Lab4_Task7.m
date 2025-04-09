@@ -49,5 +49,11 @@ ylabel('Voltage (V)')
 grid on
 legend('Measured','Optimized Model')
 
+%% output
+Cp = 9.62e-9;  RL = 10e3;
+
+parameters = [m c k Cp RL theta_best]';
+writematrix(parameters, 'task7_Parameters.csv');
+
 
 
