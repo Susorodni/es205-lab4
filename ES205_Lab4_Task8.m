@@ -24,5 +24,5 @@ m = X(1);
 c = X(2);
 theta =X(6);
 
-poles = roots([(C*R*m)/k (C*R*c+m)/k (R*theta^2+c+C*R*k)/k]);
+poles = roots([(C*R*m)/k (C*R*c+m)/k (R*theta^2+c+C*R*k)/k 1]);
 zeros = roots([(R*theta)/k 0]);
