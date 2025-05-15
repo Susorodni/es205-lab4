@@ -20,9 +20,13 @@ options = odeset('AbsTol', 0.00001, 'RelTol', 0.00001);
 q0 = [y0; 0; v(1)];
 [~, q] = ode45(@ODEpiezo, t_cut, q0, options, m, k, c, theta0);
 
-
+% Figure 1 - plots voltage over one second
+figure; set(gcf, 'Position', [50 50 1200 700]); hold on
 plot(t_cut,v_cut*1000,t_cut,q(:,3))
-legend('1','2')
+xlabel('Time (s)')
+ylabel('Voltage (V)')
+grid on
+legend('Measured','Model')
 
 %% fminsearch
 options = optimset('Display','iter');
@@ -33,6 +37,7 @@ theta_best = fminsearch(@(theta)errorFunctionPiezo(z,v_cut,t_cut,k,theta),theta0
 
 v_opt = q(:,3);
 
+% Figure 2
 figure; set(gcf, 'Position', [50 50 1200 700]); hold on
 plot(t_cut,v_cut,t_cut,v_opt(1:idx))
 xlabel('Time (s)')
@@ -42,6 +47,7 @@ legend('Measured','Optimized Model')
 
 
 %% plot over whole range
+% Figure 3
 figure; set(gcf, 'Position', [50 50 1200 700]); hold on
 plot(t,v,t,v_opt)
 xlabel('Time (s)')
